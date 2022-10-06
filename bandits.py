@@ -4,13 +4,11 @@ import random
 
 class Bandit(object):
     def __init__(self, n) -> None:
-        self.n = n
-    
-    def createDistribution(self, n):
-        print("test")
+        self.arms = n
         self.__createRewardDistribution(n)
-
-        
+    
+    def getNoArms(self):
+        return self.arms
     '''
     Create a random distribution of rewards
     '''
@@ -36,5 +34,5 @@ class Bandit(object):
     
     def pullArm(self, armNo):
         #define pull distribution
-        armNo = armNo - 1
         return random.choices(self.arm[armNo]["reward"], self.arm[armNo]["distri"])
+    
