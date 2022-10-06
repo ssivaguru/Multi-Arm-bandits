@@ -36,3 +36,15 @@ class Bandit(object):
         #define pull distribution
         return random.choices(self.arm[armNo]["reward"], self.arm[armNo]["distri"])
     
+    def printestimate(self):
+        output = []
+
+        for key in self.arm:
+            distri = self.arm[key]["distri"]
+            reward = self.arm[key]["reward"]
+            temp = []
+            for i in range(0, len(distri)):
+                temp.append(reward[i] * distri[i])
+            output.append(sum(temp))
+        
+        print(output)
