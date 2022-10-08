@@ -36,7 +36,7 @@ class Bandit(object):
         #define pull distribution
         return random.choices(self.arm[armNo]["reward"], self.arm[armNo]["distri"])
     
-    def printestimate(self):
+    def __getExpectedVal(self):
         output = []
 
         for key in self.arm:
@@ -47,4 +47,8 @@ class Bandit(object):
                 temp.append(reward[i] * distri[i])
             output.append(sum(temp))
         
-        print(output)
+        return output
+
+    def getBestArm(self):
+        out = self.__getExpectedVal()
+        return np.argmax(out)
