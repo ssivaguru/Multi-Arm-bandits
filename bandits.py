@@ -19,7 +19,7 @@ class Bandit(object):
             rangelist = np.random.dirichlet(np.ones(distributionRange),size=1)
             rewards = []
             while distributionRange != 0:
-                rewards.append(randrange(10, 100))
+                rewards.append(randrange(1, 10))
                 distributionRange = distributionRange - 1
 
             self.arm[x] = {}
